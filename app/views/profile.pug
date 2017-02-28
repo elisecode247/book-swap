@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Clementine.js - The elegant and lightweight full stack JavaScript boilerplate.
+    link(href='/public/css/main.css', rel='stylesheet', type='text/css')
+  body
+    .container
+      .github-profile
+        img(src='/public/img/gh-mark-32px.png', alt='github logo')
+        p
+          span Username:
+          span= profileUsername
+        a.menu(href='/') Home
+        p#menu-divide |
+        |  
+        a.menu(href='/logout') Logout
+    script(type='text/javascript', src='common/ajax-functions.js')
+    script(type='text/javascript', src='controllers/userController.client.js')
