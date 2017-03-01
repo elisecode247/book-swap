@@ -11,8 +11,10 @@ module.exports = function(app, passport) {
 
 	function isLoggedIn(req, res, next) {
 		if (req.isAuthenticated()) {
+			req.loggedIn = true;
 			return next();
 		} else {
+			req.loggedin = false;
 			res.redirect('/login');
 		}
 	}
@@ -21,12 +23,15 @@ module.exports = function(app, passport) {
 
 	app.route('/')
 		.get(isLoggedIn, function(req, res) {
-			res.render('index');
+			res.render('index', {loggedIn: req.loggedIn});
 		});
 
 	app.route('/signup')
 		.get(function(req, res) {
-			res.render('signup', {message: req.flash('signupMessage')})
+			res.render('signup', {
+				loggedIn: false, 
+				message: req.flash('signupMessage')
+			});
 		})
 		.post(passport.authenticate('local-signup', {
 			successRedirect:'/profile', 
@@ -36,7 +41,10 @@ module.exports = function(app, passport) {
 
 	app.route('/login')
 		.get(function(req, res) {
-			res.render('login', {message: req.flash('loginMessage')});
+			res.render('login', {
+				loggedIn: false, 
+				message: req.flash('loginMessage')
+			});
 		})
 		.post(passport.authenticate('local-login', {
 				successRedirect: '/profile',
@@ -52,7 +60,11 @@ module.exports = function(app, passport) {
 
 	app.route('/profile')
 		.get(isLoggedIn, function(req, res) {
-			res.render('profile', {username: req.username});
+			res.render('profile', {
+				loggedIn: req.loggedIn,
+				username: req.user.local.username,
+				password: req.user.local.password
+			});
 		});
 
 	app.route('/api/:id')

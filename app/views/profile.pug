@@ -1,15 +1,18 @@
 doctype html
 html
   head
-    title Clementine.js - The elegant and lightweight full stack JavaScript boilerplate.
-    link(href='/public/css/main.css', rel='stylesheet', type='text/css')
+    include head.pug
   body
+    include menu.pug
     .container
       .github-profile
         img(src='/public/img/gh-mark-32px.png', alt='github logo')
         p
-          span Username:
-          span= profileUsername
+          span Username: 
+          span= username
+        p
+          span Password: 
+          span= password
         a.menu(href='/') Home
         p#menu-divide |
         |  
