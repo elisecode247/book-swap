@@ -6,18 +6,12 @@ var bcrypt = require('bcrypt-nodejs');
 
 var User = new Schema({
     local: {
-        username: {
-            type: String,
-            required: true
-        },
-        password: {
-            type: String,
-            required: true
-        }
+        username: {type: String, required: true},
+        password: {type: String,required: true}
     },
-    nbrClicks: {
-        clicks: Number
-    }
+    fullName: {type: String, required: false},
+    city: {type: String, required: false},
+    state: {type: String, required: false}
 });
 
 User.methods.generateHash = function(password) {

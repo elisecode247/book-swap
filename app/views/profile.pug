@@ -4,18 +4,27 @@ html
     include head.pug
   body
     include menu.pug
-    .container
-      .github-profile
-        img(src='/public/img/gh-mark-32px.png', alt='github logo')
-        p
-          span Username: 
+    p= message
+    form(action='/profile' method='post')
+      div
+        span Username: 
           span= username
-        p
-          span Password: 
-          span= password
-        a.menu(href='/') Home
-        p#menu-divide |
-        |  
-        a.menu(href='/logout') Logout
-    script(type='text/javascript', src='common/ajax-functions.js')
-    script(type='text/javascript', src='controllers/userController.client.js')
+        div#profile-username
+      div
+        label(for='city') Full Name:
+        input(id='fullName', name='fullName', value= fullName)
+      div
+        label(for='city') City:
+        input(id='city', name='city', value= city)
+      div
+        label(for='state') State:
+        input(id='state', name='state', value= state)
+      div
+        label(for='password') Change Password:
+        input(id='password', name='password')
+      div
+        label(for='passwordCheck') Verify Password:
+        input(id='passwordCheck', name='passwordCheck')
+        div.verifyPassword
+      button#update-button(type="submit") Update Profile
+    

@@ -1,0 +1,20 @@
+html
+  head
+  body
+    include menu.pug
+    h1 My Books
+    p= message
+    label(for='title') Title:
+    input(type='text', id='title', name='title')
+    div.verifyUsername
+    button.search-button Search
+    div#search-result
+    img#search-result-img(src="#")
+    div#library
+    h2 Outgoing Requests
+    div#outgoing-requests
+    h3 Incoming Requests
+    div#incoming-requests
+    script(type='text/javascript', src='common/ajax-functions.js')
+    script(type='text/javascript', src='controllers/libraryController.client.js')
+        

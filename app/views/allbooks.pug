@@ -1,0 +1,11 @@
+html
+  head
+  body
+    include menu.pug
+    h1 All Books
+    div#collection
+    script(type='text/javascript', src='common/ajax-functions.js')
+    if loggedIn
+      script(type='text/javascript', src='controllers/collectionController.client.js')
+    else
+      script(type='text/javascript', src='controllers/indexController.client.js')

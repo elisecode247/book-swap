@@ -5,7 +5,7 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnstonbl01/clementinejs-fcc"
+    "url": "git+https://github.com/elisecode247/book-swap"
   },
   "keywords": [
     "MongoDB",
@@ -14,7 +14,8 @@
     "Express",
     "Node",
     "javascript",
-    "boilerplate"
+    "boilerplate",
+    "clementinejs"
   ],
   "scripts": {
     "start": "node server.js"
@@ -30,7 +31,8 @@
     "express-session": "^1.11.3",
     "mongoose": "^4.1.0",
     "passport": "^0.3.0",
-    "pug": "^2.0.0-beta11"
+    "pug": "^2.0.0-beta11",
+    "superagent": "^3.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
