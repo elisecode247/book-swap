@@ -1,20 +1,6 @@
-html
-  head
-  body
-    include menu.pug
-    h1 Sign Up Form
-    form(action='/signup' method='post')
-      p= message
-      div
-        label(for='username') Username:
-        input(type='text',id='username',name='username')
-        div.verifyUsername
-      div
-        label(for='password') Password:
-        input(id='password', name='password')
-      div
-        label(for='passwordCheck') Verify Password:
-        input(id='passwordCheck', name='passwordCheck')
-        div.verifyPassword
-      div.button
-        button(type='submit') Sign Up
+extends layout.pug
+
+block content
+  section.section.section--tall
+    h2 Sign Up Form
+    include partials/signupform.pug

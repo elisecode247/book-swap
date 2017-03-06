@@ -1,0 +1,19 @@
+header
+  h1.sr-only #{pageTitle}
+  div.container
+    - if (pageTitle === "Homepage"){var home = true;}
+    if (home)
+      a.header__a(href='#')
+        img.header__logo(src='../../public/img/booklogo.png', alt='Book Logo')
+    else
+      a.header__a(href='/')
+        img.header__logo(src='../../public/img/booklogo.png', alt='Book Logo')
+    nav.header__nav
+      if loggedIn
+        a.header__nav__a(href='/allbooks') All&nbspBooks 
+        a.header__nav__a(href='/mybooks') My&nbspBooks
+        a.header__nav__a(href='/profile') Profile
+        a.header__nav__a(href='/logout') Logout
+      else
+        a.header__nav__a(href='/signup') Sign&nbspUp
+        a.header__nav__a(href='/login') Login

@@ -1,0 +1,12 @@
+form.form.container(action='/signup' method='post')
+  p= message
+  label.form__label(for='username') Username: 
+  input.form__input(type='text',id='username',name='username')
+  br
+  label.form__label(for='password') Password: 
+  input.form__input(id='password', name='password')
+  br
+  label.form__label(for='passwordCheck') Verify Password: 
+  input.form__input(id='passwordCheck', name='passwordCheck')
+  br
+  button.form__button(type='submit') Sign Up

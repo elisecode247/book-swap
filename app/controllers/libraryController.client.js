@@ -15,24 +15,52 @@
    var getLendingUrl = appUrl + '/api/book/lending/';
 
    function showBook(data) {
-      var bookObject = JSON.parse(data);
-      resultImage.src = bookObject.image;
+      var booksObject = JSON.parse(data);
+      var bookContainer = document.createElement('div');
+      bookContainer.className = 'book';
+      var image = document.createElement("img");
+      var newstr = booksObject.image.replace(/http/g, 'https');
+      image.className = 'book__img';
+      image.id = booksObject._id;
+      image.src = newstr;
+      image.alt = booksObject.title;
+      image.title = booksObject.title;
+      
+      var deleteButton = document.createElement('button');
+         deleteButton.id = 'btn-' + image.id;
+         deleteButton.className = 'book__button';
+         deleteButton.innerHTML = 'x';
+         deleteButton.addEventListener('click', function() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('DELETE', apiUrl + booksObject._id, true);
+            xmlhttp.send();
+            this.style.backgroundColor = 'red';
+         });
+      bookContainer.appendChild(deleteButton);
+      bookContainer.appendChild(image);
+      if (!library.hasChildNodes()) {
+         library.appendChild(bookContainer);
+      } else {
+         library.insertBefore(bookContainer, library.firstChild);
+      }
    }
    
    function showLibrary(data) {
       var booksObject = JSON.parse(data);
       for (let i = 0; i < booksObject.length; i++) {
          var bookContainer = document.createElement('div');
+         bookContainer.className = 'book';
          var image = document.createElement("img");
          var newstr = booksObject[i].image.replace(/http/g, 'https');
+         image.className = 'book__img';
          image.id = booksObject[i]._id;
          image.src = newstr;
          image.alt = booksObject[i].title;
          image.title = booksObject[i].title;
          var deleteButton = document.createElement('button');
          deleteButton.id = 'btn-' + image.id;
-         deleteButton.className = 'delete-button';
-         deleteButton.innerHTML = 'x';
+         deleteButton.className = 'book__button';
+         deleteButton.innerHTML = 'X';
          deleteButton.addEventListener('click', function() {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open('DELETE', apiUrl + booksObject[i]._id, true);
@@ -50,16 +78,18 @@
       var booksObject = JSON.parse(data);
       for (let i = 0; i < booksObject.length; i++) {
          var bookContainer = document.createElement('div');
+         bookContainer.className = 'book';
          var image = document.createElement("img");
          var newstr = booksObject[i].image.replace(/http/g, 'https');
+         image.className = 'book__img';
          image.id = booksObject[i]._id;
          image.src = newstr;
          image.alt = booksObject[i].title;
          image.title = booksObject[i].title;
          var deleteButton = document.createElement('button');
          deleteButton.id = 'btn-' + image.id;
-         deleteButton.className = 'delete-button';
-         deleteButton.innerHTML = 'x';
+         deleteButton.className = 'book__button';
+         deleteButton.innerHTML = 'X';
          deleteButton.addEventListener('click', function() {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open('DELETE', getRequestUrl + booksObject[i]._id, true);
@@ -76,16 +106,18 @@
       var booksObject = JSON.parse(data);
       for (let i = 0; i < booksObject.length; i++) {
          var bookContainer = document.createElement('div');
+         bookContainer.className = 'book';
          var image = document.createElement("img");
          var newstr = booksObject[i].image.replace(/http/g, 'https');
+         image.className = 'book__img';
          image.id = booksObject[i]._id;
          image.src = newstr;
          image.alt = booksObject[i].title;
          image.title = booksObject[i].title;
          var deleteButton = document.createElement('button');
          deleteButton.id = 'del-btn-' + image.id;
-         deleteButton.className = 'delete-button';
-         deleteButton.innerHTML = 'x';
+         deleteButton.className = 'book__button book__button--delete';
+         deleteButton.innerHTML = 'X';
          deleteButton.addEventListener('click', function() {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open('DELETE', getLendingUrl + booksObject[i]._id, true);
@@ -95,7 +127,7 @@
          if (!booksObject[i].borrower){
             var addButton = document.createElement('button');
             addButton.id = 'add-btn-' + image.id;
-            addButton.className = 'add-button';
+            addButton.className = 'book__button book__button--add';
             addButton.innerHTML = 'Y';
             addButton.addEventListener('click', function() {
                var xmlhttp = new XMLHttpRequest();

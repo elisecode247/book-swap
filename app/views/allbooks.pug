@@ -1,11 +1,24 @@
-html
-  head
-  body
-    include menu.pug
-    h1 All Books
-    div#collection
-    script(type='text/javascript', src='common/ajax-functions.js')
+extends layout.pug
+
+block content
+  if !loggedIn
+    section.section.section--grey#introduction
+      div.container
+        h2.h2--large Book Swap
+        p Create your own library and trade books with others. 
+  section.section.section--library
+    h2 Latest Books
     if loggedIn
-      script(type='text/javascript', src='controllers/collectionController.client.js')
-    else
-      script(type='text/javascript', src='controllers/indexController.client.js')
+      p Request to borrow a book by clicking on the request button.
+    div.container.container--library#collection
+  if !loggedIn
+    section.section.section--grey
+      h2 Sign Up Now
+      include partials/signupform.pug
+    
+block scripts
+  script(type='text/javascript', src='common/ajax-functions.js')
+  if loggedIn
+    script(type='text/javascript', src='controllers/collectionController.client.js')
+  else
+    script(type='text/javascript', src='controllers/indexController.client.js')
