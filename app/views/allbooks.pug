@@ -18,8 +18,8 @@ block content
     
 block scripts
   script(type='text/javascript', src='common/ajax-functions.js')
-  script(type='text/javascript', src='common/form-functions.js')
   if loggedIn
     script(type='text/javascript', src='controllers/collectionController.client.js')
   else
+    script(type='text/javascript', src='common/form-functions.js')
     script(type='text/javascript', src='controllers/indexController.client.js')

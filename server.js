@@ -6,9 +6,14 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
 var session = require('express-session');
+var fs = require('fs');
 
 var app = express();
-// development only require('dotenv').load();
+
+if (fs.existsSync('.env')){ // for development only
+	require('dotenv').load();
+}
+
 require('./app/config/passport')(passport);
 
 mongoose.connect(process.env.MONGO_URI);
