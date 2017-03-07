@@ -52,10 +52,18 @@ function BookHandler() {
             .end(function(err, result) {
                 if (!err) {
                     var book = result.body.items[0];
+                    var imageHolder = '../../public/img/booklogo.png';
+                    if (book.hasOwnProperty('volumeInfo')){
+                        if (book.volumeInfo.hasOwnProperty('imageLinks')) {
+                            if (book.volumeInfo.imageLinks.hasOwnProperty('smallThumbnail')){
+                                imageHolder = book.volumeInfo.imageLinks.smallThumbnail;
+                            }
+                        }
+                    }
                     var newBook = new Books({
                         'bookid': book.id,
                         'title': book.volumeInfo.title,
-                        'image': book.volumeInfo.imageLinks.smallThumbnail || null,
+                        'image': imageHolder,
                         'owner': req.user.local.username,
                         'borrower': null,
                         'request': null

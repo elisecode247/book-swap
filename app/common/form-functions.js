@@ -54,7 +54,9 @@ form.addEventListener('submit', function(e) {
         } else {
             formMessage.textContent = 'There is an error in your form.';
         }
-    }
+    } else if (form.name === 'profile'){
+            form.submit();
+        }
 
 }, false);
 
@@ -67,3 +69,9 @@ passwordInput
 
 passwordCheckInput
     .addEventListener('change', formFunctions.checkPassword, false);
+    
+form.onkeydown = function(e){
+   if(e.keyCode == 13){
+     form.submit();
+   }
+};

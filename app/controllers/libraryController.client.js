@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-
+   var searchInput = document.querySelector('#title');
    var searchButton = document.querySelector('.search-button');
    var library = document.querySelector('#library');
    var outgoingRequests = document.querySelector('#outgoing-requests');
@@ -13,42 +13,42 @@
    var getLendingsUrl = appUrl + '/api/book/lendingRequests';
    var getLendingUrl = appUrl + '/api/book/lending/';
 
-   function createBookContainer(booksObject) {
+   function createBookContainer(myBooksObject) {
       var bookContainer = document.createElement('div');
       bookContainer.className = 'book';
       var image = document.createElement('img');
-      var newstr = booksObject.image.replace(/http/g, 'https');
+      var newstr = myBooksObject.image.replace(/http/g, 'https');
       image.className = 'book__img';
-      image.id = booksObject._id;
+      image.id = myBooksObject._id;
       image.src = newstr;
-      image.alt = booksObject.title;
-      image.title = booksObject.title;
+      image.alt = myBooksObject.title;
+      image.title = myBooksObject.title;
       bookContainer.appendChild(image);
       return bookContainer;
    }
 
-   function createDeleteButton(booksObject, myUrl) {
+   function createDeleteButton(myBooksObject, myUrl) {
       var deleteButton = document.createElement('button');
-      deleteButton.id = 'btn-' + booksObject._id;
+      deleteButton.id = 'btn-' + myBooksObject._id;
       deleteButton.className = 'book__button book__button--delete';
       deleteButton.innerHTML = 'X';
       deleteButton.addEventListener('click', function() {
          var xmlhttp = new XMLHttpRequest();
-         xmlhttp.open('DELETE', myUrl + booksObject._id, true);
+         xmlhttp.open('DELETE', myUrl + myBooksObject._id, true);
          xmlhttp.send();
          this.style.backgroundColor = 'red';
       });
       return deleteButton;
    }
 
-   function createAddButton(booksObject, getLendingUrl) {
+   function createAddButton(myBooksObject, getLendingUrl) {
       var addButton = document.createElement('button');
-      addButton.id = 'add-btn-' + booksObject.id;
+      addButton.id = 'add-btn-' + myBooksObject._id;
       addButton.className = 'book__button book__button--add';
       addButton.innerHTML = 'Y';
       addButton.addEventListener('click', function() {
          var xmlhttp = new XMLHttpRequest();
-         xmlhttp.open('POST', getLendingUrl + booksObject._id, true);
+         xmlhttp.open('POST', getLendingUrl + myBooksObject._id, true);
          xmlhttp.send();
          this.style.backgroundColor = 'green';
       });
@@ -71,7 +71,7 @@
       var booksObject = JSON.parse(data);
       for (let i = 0; i < booksObject.length; i++) {
          var bookContainer = createBookContainer(booksObject[i]);
-         var deleteButton = createDeleteButton(booksObject, apiUrl);
+         var deleteButton = createDeleteButton(booksObject[i], apiUrl);
          bookContainer.appendChild(deleteButton);
          library.appendChild(bookContainer);
       }
@@ -114,5 +114,11 @@
       var searchUrl = apiUrl + document.querySelector('#title').value;
       ajaxFunctions.ajaxRequest('POST', searchUrl, showBook)
    }, false);
+   
+   searchInput.onkeydown = function(e){
+   if(e.keyCode == 13){
+     searchButton.click();
+   }
+};
 
 })();

@@ -8,6 +8,7 @@ var flash    = require('connect-flash');
 var session = require('express-session');
 
 var app = express();
+// development only require('dotenv').load();
 require('./app/config/passport')(passport);
 
 mongoose.connect(process.env.MONGO_URI);
@@ -26,7 +27,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
 app.set('views', './app/views');
 app.set('view engine', 'pug');
 
