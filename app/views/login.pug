@@ -4,12 +4,12 @@ block content
   section.section.section--tall
     h2 Login
     form.form.container(action='/login' method='post')
-      p= message
+      p.form__message= message
       br
       label.form__label(for='username') Username 
       input.form__input(type='text',id='username', name='username')
       br
       label.form__label(for='password') Password  
-      input.form__input(id='password', name='password')
+      input.form__input(id='password', name='password', type='password')
       br
       button.form__button(type='submit') Login

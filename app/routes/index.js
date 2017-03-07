@@ -71,7 +71,7 @@ module.exports = function(app, passport) {
 				state: req.user.state
 			});
 		})
-		.post(isLoggedIn, userHandler.updateUser)
+		.post(isLoggedIn, userHandler.updateUser);
 
 	app.route('/allbooks')
 		.get(function(req, res) {
@@ -112,6 +112,5 @@ module.exports = function(app, passport) {
 
 	app.route('/api/books')
 		.get(bookHandler.getCollection);
-
 
 };

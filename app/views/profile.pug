@@ -17,11 +17,15 @@ block content
       input.form__input(id='state', name='state', value= state)
       br
       label.form__label(for='password') Change Password: 
-      input.form__input(id='password', name='password')
+      input.form__input(id='password', name='password', type='password')
+      span.form__message#passwordMessage
       br
       label.form__label(for='passwordCheck') Verify Password: 
-      input.form__input(id='passwordCheck', name='passwordCheck')
+      input.form__input(id='passwordCheck', name='passwordCheck', type='password')
+      span.form__message#passwordCheckMessage
       br
       button.form__button#update-button(type="submit") Update Profile
-      span= message
-      
+      span.form__message= message
+
+block scripts
+  script(type='text/javascript', src='common/form-functions.js')

@@ -6,7 +6,7 @@ block content
       div.container
         h2.h2--large Book Swap
         p Create your own library and trade books with others. 
-  section.section.section--library
+  section.section.section--tall
     h2 Latest Books
     if loggedIn
       p Request to borrow a book by clicking on the request button.
@@ -18,6 +18,7 @@ block content
     
 block scripts
   script(type='text/javascript', src='common/ajax-functions.js')
+  script(type='text/javascript', src='common/form-functions.js')
   if loggedIn
     script(type='text/javascript', src='controllers/collectionController.client.js')
   else

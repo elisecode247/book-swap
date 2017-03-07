@@ -16,7 +16,7 @@
             image.src = newstr;
             image.alt = booksObject[i].title;
             image.title = booksObject[i].title;
-            bookContainer.appendChild(image)
+            bookContainer.appendChild(image);
             collection.appendChild(bookContainer);
         }
     }

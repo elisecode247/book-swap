@@ -10,24 +10,21 @@ Styling TOC:
 ******/
 
 
-
 /****** Base and Utilities ******/
 
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url('../fonts/Roboto-Regular.ttf') format('truetype');
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Roboto'), local('Roboto-Regular'), url('../fonts/Roboto-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
 }
-
-
 
 body {
 	font-family: 'Roboto', sans-serif;
@@ -37,7 +34,8 @@ body {
 	background-color: white;
 }
 
-input, button {
+input,
+button {
 	font-size: 20px;
 }
 
@@ -49,22 +47,22 @@ input, button {
 }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }
 
 .container {
 	min-width: 240px;
 	max-width: 1200px;
-  position: relative;
-  padding: 0.5em 0 0.5em 0.5em;
-  margin: 0 auto;
+	position: relative;
+	padding: 0.5em 0 0.5em 0.5em;
+	margin: 0 auto;
 }
 
 .container--library {
@@ -97,7 +95,6 @@ header {
 	width: 2.5em;
 }
 
-
 .header__nav {
 	display: block;
 	position: relative;
@@ -114,10 +111,10 @@ header {
 }
 
 @media only screen and (min-width: 420px) {
-    .header__nav__a {
-        display: inline;
-        line-height: 2.5em;
-    }
+	.header__nav__a {
+		display: inline;
+		line-height: 2.5em;
+	}
 }
 
 .header__nav__a:hover {
@@ -151,8 +148,8 @@ p {
 	text-align: center;
 }
 
-/****** Section Styling ******/
 
+/****** Section Styling ******/
 
 section {
 	display: block;
@@ -162,7 +159,6 @@ section {
 	background-color: #F4F4F4;
 	min-height: 25vh;
 }
-
 
 .section--tall {
 	min-height: 100vh;
@@ -195,10 +191,20 @@ section {
 	background-color: IndianRed;
 }
 
-
 .book__img {
 	width: 128px;
 }
+
+.book__message {
+	width: 125px;
+	position: absolute;
+	bottom: 40%;
+	transform: rotate(45deg);
+	background-color: white;
+	border: 3px solid green;
+	text-align: center;
+}
+
 
 /****** Form Styling ******/
 
@@ -207,20 +213,22 @@ section {
 	margin: 0 auto;
 }
 
-.form__label {
-	
-}
-
 .form__input {
 	font-size: 1em;
 }
 
 .form__button {
 	font-size: 1em;
-	
 }
 
+.form__message {
+	color: red;
+	font-style: italic;
+}
+
+
 /****** Footer Styling ******/
+
 footer {
 	padding: 0px;
 	margin: 0px;
@@ -240,7 +248,3 @@ footer {
 	color: #373737;
 	text-decoration: underline;
 }
-
-
-
-

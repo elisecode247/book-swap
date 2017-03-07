@@ -1,7 +1,6 @@
-"use strict";
+'use strict';
 
 var Users = require('../models/users.js');
-
 
 function UserHandler() {
 
@@ -25,11 +24,17 @@ function UserHandler() {
                 }
                 user.save(function(err) {
                     if (err) throw err;
-                    res.redirect('/profile')
+                    res.render('profile', {
+                        loggedIn: req.isAuthenticated(),
+        				username: req.user.local.username,
+        				fullName: req.user.fullName,
+        				city: req.user.city,
+        				state: req.user.state,
+        				message: 'Password Changed'
+                    })
                 });
             })
     };
-
 }
 
 module.exports = UserHandler;
